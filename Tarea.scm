@@ -6,7 +6,6 @@
   ;recorrer la lista y recuperar numero por numero (num)
   if((andmap igual-igual num list) "Sacar el numero" "Mantener el numero")
   ;Realizar el codigo
-  
   )
 
 (define (igual-igual num list) (not(boolean? (member num list))))
