@@ -1,19 +1,20 @@
 #lang racket
-(define esto-es-una-definicion 24)
-;Esto es un comentario
 #|
-Esto es un comentario multi linea
-|#
-(if #f A B);Retorna A si es true y B si es false
-(exact? parametro);retorna true or false
-(inexact? parametro);retorna true or false
-;---------------------------------------------------------------------------------
-
-;Aqui empieza el codigo
 (define (inverso lista n)
+  (length lista)
+  ;crear la lista de numeros hasta n-1 (list)
+  ;recorrer la lista y recuperar numero por numero (num)
+  if((andmap igual-igual num list) "Sacar el numero" "Mantener el numero")
   ;Realizar el codigo
   )
 
+(define (igual-igual num list) (not(boolean? (member num list))))
+|#
+(define (lista-factorial n list)
+  (if(= n 0)(append list 0)
+     (append list (- n 1))))
+;-----------------------------------------------------------------------------
+#|
 (define (umbral_simple lista umbral tipon)
   ;Realizar el codigo
   )
@@ -35,3 +36,4 @@ Esto es un comentario multi linea
 (define (query lista pos op params)
   ;Reaalizar el codigo
   )
+|#
