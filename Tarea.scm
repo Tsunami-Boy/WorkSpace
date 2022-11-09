@@ -1,5 +1,6 @@
 #lang racket
 #|
+
 (define (inverso lista n)
   (length lista)
   ;crear la lista de numeros hasta n-1 (list)
