@@ -10,10 +10,20 @@
   )
 
 (define (igual-igual num list) (not(boolean? (member num list))))
-|#
+
 (define (lista-factorial n list)
   (if(= n 0)(append list 0)
      (append list (- n 1))))
+
+(define (factorial n)
+  (if (= n 0) 1 (* n (factorial(- n 1)))))
+(define (inverso lista n)
+  (cond
+    []
+    []
+    []
+    []))
+|#
 ;-----------------------------------------------------------------------------
 #|
 (define (umbral_simple lista umbral tipon)
