@@ -73,8 +73,23 @@
   )
 ;----------------------------------------------------------------------------------------------------------
 (define (estables lista umbral fM fm)
-  ;Realizar el codigo
-  )
+  (list (estables_fM lista umbral fM)(estables_fm lista umbral fm)))
+
+(define (estables_fM lista umbral fM)
+  (if (equal? lista empty)
+      0
+      (length (umbral_simple
+               (umbral_simple lista umbral #\M); Aplicarles f
+               umbral
+               #\M))))
+
+(define (estables_fm lista umbral fm)
+  (if (equal? lista empty)
+      0
+      (length (umbral_simple
+               (umbral_simple lista umbral #\m); Aplicarles f
+               umbral
+               #\m))))
 ;----------------------------------------------------------------------------------------------------------
 (define (query lista pos op params)
   ;Reaalizar el codigo
