@@ -47,18 +47,35 @@
 (define (umbral_cola lista umbral tipo)
   ;Realizar el codigo
   )
-
+|#
+;----------------------------------------------------------------------------------------------------------
 (define (modsel_simple lista seleccion f)
-  ;Realizar el codigo
+  (modsel_simple_ lista seleccion f (list ) 0)
   )
+
+(define (modsel_simple_ lista seleccion f lista_ i)
+  (if (equal? empty lista)
+      (append lista_ empty)
+      (if (> (length lista) 1)
+          (if (confirmar seleccion i)
+              (modsel_simple_ (rest lista) seleccion f (append lista_ (list (f (car lista)))) (+ i 1))
+              (modsel_simple_ (rest lista) seleccion f (append lista_ (list (car lista))) (+ i 1)))
+          (if (confirmar seleccion i)
+              (append lista_ (list (f (car lista))))
+              (append lista_ (list (car lista)))))))
+
+(define (confirmar lista num)
+  (not (boolean? (member num lista))))
+;----------------------------------------------------------------------------------------------------------
+#|
 (define (modsel_cola lista seleccion f)
   ;Realizar el codigo
   )
-
+;----------------------------------------------------------------------------------------------------------
 (define (estables lista umbral fM fm)
   ;Realizar el codigo
   )
-
+;----------------------------------------------------------------------------------------------------------
 (define (query lista pos op params)
   ;Reaalizar el codigo
   )
