@@ -88,7 +88,7 @@
   (if (equal? lista empty)
       0
       (length (umbral_simple
-               (aplicar fM (umbral_simple lista umbral #\M) (list )); Aplicarles f
+               (aplicar fM (lista_val lista (umbral_simple lista umbral #\M) (list ) 0) (list )); Aplicarles f
                umbral
                #\M))))
 
@@ -96,7 +96,7 @@
   (if (equal? lista empty)
       0
       (length (umbral_simple
-               (aplicar fm (umbral_simple lista umbral #\m) (list )); Aplicarles f
+               (aplicar fm (lista_val lista (umbral_simple lista umbral #\m) (list ) 0) (list )); Aplicarles f
                umbral
                #\m))))
 
@@ -105,12 +105,20 @@
       (aplicar f (rest lista) (append lista_ (list (f (car lista)))))
       (append lista_ (list (f (car lista))))))
 
-(define (lista_val lista1 lista2 lista_ i)
+(define (lista_val lista1 lista2 lista_ i) ;Funciona
   (if (> (length lista1) 1)
+      (if (> (length lista2) 1)
+          (if (= (car lista2) i)
+              (lista_val (rest lista1) (rest lista2) (append lista_ (list (car lista1))) (+ i 1))
+              (lista_val (rest lista1) lista2 lista_ (+ i 1)))
+          (if (= (car lista2) i)
+              (append lista_ (list (car lista1)))
+              (lista_val (rest lista1) lista2 lista_ (+ i 1))))
       (if (= (car lista2) i)
-          (lista_val (rest lista1) (rest lista2) (append lista_ (list (car lista1)) (+ i 1)))
-          (lista_val (rest lista1) lista2 lista_ (+ i 1)));
-      ()))
+          (append lista_ (list (car lista1)))
+          (append lista_ empty))))
+
+;(lista_val '(1 2 3 4 5) (umbral_simple '(1 2 3 4 5) 3 #\m) (list ) 0) ;Funciona
 
 (estables '(15 2 1 3 27 5 10) 5 (lambda (x) (/ x 2)) (lambda (x) (* x 2)))
 ;----------------------------------------------------------------------------------------------------------
