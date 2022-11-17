@@ -82,13 +82,13 @@
 |#
 ;----------------------------------------------------------------------------------------------------------
 (define (estables lista umbral fM fm)
-  (list (estables_fM lista umbral fM)(estables_fm lista umbral fm)))
+  (list (estables_fM lista umbral fM) (estables_fm lista umbral fm)))
 
 (define (estables_fM lista umbral fM)
   (if (equal? lista empty)
       0
       (length (umbral_simple
-               (fM (umbral_simple lista umbral #\M)); Aplicarles f
+               (aplicar fM (umbral_simple lista umbral #\M) (list )); Aplicarles f
                umbral
                #\M))))
 
@@ -96,14 +96,21 @@
   (if (equal? lista empty)
       0
       (length (umbral_simple
-               (fm (umbral_simple lista umbral #\m)); Aplicarles f
+               (aplicar fm (umbral_simple lista umbral #\m) (list )); Aplicarles f
                umbral
                #\m))))
 
-(define (aplicar f lista)
+(define (aplicar f lista lista_)
   (if (> (length lista) 1)
-      ()
-      (if =)))
+      (aplicar f (rest lista) (append lista_ (list (f (car lista)))))
+      (append lista_ (list (f (car lista))))))
+
+(define (lista_val lista1 lista2 lista_ i)
+  (if (> (length lista1) 1)
+      (if (= (car lista2) i)
+          (lista_val (rest lista1) (rest lista2) (append lista_ (list (car lista1)) (+ i 1)))
+          (lista_val (rest lista1) lista2 lista_ (+ i 1)));
+      ()))
 
 (estables '(15 2 1 3 27 5 10) 5 (lambda (x) (/ x 2)) (lambda (x) (* x 2)))
 ;----------------------------------------------------------------------------------------------------------
