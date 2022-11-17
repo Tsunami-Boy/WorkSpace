@@ -79,6 +79,7 @@
 (define (modsel_cola lista seleccion f)
   ;Realizar el codigo
   )
+|#
 ;----------------------------------------------------------------------------------------------------------
 (define (estables lista umbral fM fm)
   (list (estables_fM lista umbral fM)(estables_fm lista umbral fm)))
@@ -87,7 +88,7 @@
   (if (equal? lista empty)
       0
       (length (umbral_simple
-               (umbral_simple lista umbral #\M); Aplicarles f
+               (fM (umbral_simple lista umbral #\M)); Aplicarles f
                umbral
                #\M))))
 
@@ -95,10 +96,18 @@
   (if (equal? lista empty)
       0
       (length (umbral_simple
-               (umbral_simple lista umbral #\m); Aplicarles f
+               (fm (umbral_simple lista umbral #\m)); Aplicarles f
                umbral
                #\m))))
+
+(define (aplicar f lista)
+  (if (> (length lista) 1)
+      ()
+      (if =)))
+
+(estables '(15 2 1 3 27 5 10) 5 (lambda (x) (/ x 2)) (lambda (x) (* x 2)))
 ;----------------------------------------------------------------------------------------------------------
+#|
 (define (query lista pos op params)
   ;Reaalizar el codigo
   )
