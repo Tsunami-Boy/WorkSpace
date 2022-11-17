@@ -14,6 +14,8 @@
   (cond
     [(= i num) (append empty lista_)]
     [(< i num) (Aux (append lista_ (list i)) num (+ i 1))]))
+
+;(inverso '() 10)
 ;----------------------------------------------------------------------------------------------------------
 
 (define (umbral_simple lista umbral tipo)
@@ -42,6 +44,9 @@
           (if (< (car lista) umbral)
               (append lista_ (list i))
               (append lista_ empty)))))
+
+;(umbral_simple '(15 2 1 3 27 5 10) 5 #\M)
+;(umbral_simple '(15 2 1 3 27 5 10) 5 #\m)
 ;----------------------------------------------------------------------------------------------------------
 #|
 (define (umbral_cola lista umbral tipo)
@@ -66,6 +71,9 @@
 
 (define (confirmar lista num)
   (not (boolean? (member num lista))))
+
+;(modsel_simple '(15 2 1 3 27 5 10) '(0 4 6) (lambda (x) (modulo x 2)))
+;(modsel_simple '(15 2 1 3 27 5 10) '(3 1 2) (lambda (x) (+ x 5)))
 ;----------------------------------------------------------------------------------------------------------
 #|
 (define (modsel_cola lista seleccion f)
