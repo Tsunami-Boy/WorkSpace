@@ -118,9 +118,8 @@
           (append lista_ (list (car lista1)))
           (append lista_ empty))))
 
-;(lista_val '(1 2 3 4 5) (umbral_simple '(1 2 3 4 5) 3 #\m) (list ) 0) ;Funciona
-
-(estables '(15 2 1 3 27 5 10) 5 (lambda (x) (/ x 2)) (lambda (x) (* x 2)))
+;(lista_val '(15 2 1 3 27 5 10) (umbral_simple '(15 2 1 3 27 5 10) 5 #\m) (list ) 0) ;Funciona
+;(estables '(15 2 1 3 27 5 10) 5 (lambda (x) (/ x 2)) (lambda (x) (* x 2)))
 ;----------------------------------------------------------------------------------------------------------
 #|
 (define (query lista pos op params)
