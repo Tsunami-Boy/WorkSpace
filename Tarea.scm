@@ -121,8 +121,24 @@
 ;(lista_val '(15 2 1 3 27 5 10) (umbral_simple '(15 2 1 3 27 5 10) 5 #\m) (list ) 0) ;Funciona
 ;(estables '(15 2 1 3 27 5 10) 5 (lambda (x) (/ x 2)) (lambda (x) (* x 2)))
 ;----------------------------------------------------------------------------------------------------------
-#|
 (define (query lista pos op params)
-  ;Reaalizar el codigo
+  (query_ lista pos op params 0)
   )
-|#
+(define (query_ lista pos op params i)
+  (if (= pos i)
+      (cond
+        [(= op 1) (query_1 (car lista) params)]
+        [(= op 2) (query_2 (car lista) params)]
+        [(= op 3) (query_3 (car lista) params)])
+      (query_ (rest lista) pos op params (+ i 1))))
+
+(define (query_1 lista params);Funciona
+  (umbral_simple lista (car params) (last params)))
+
+(define (query_2 lista params)
+  (modsel_simple lista (car params) (lambda (x) (#|aca va last params|#) )))
+
+(define (query_3 lista params)
+  (printf lista))
+
+(query '((0 1 2 3 4) (4 3 2 1 0) (15 2 1 3 27 5 10)) 1 1 '(1 #\M))
