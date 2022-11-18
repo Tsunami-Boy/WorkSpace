@@ -84,8 +84,24 @@
 |#
 ;----------------------------------------------------------------------------------------------------------
 (define (estables lista umbral fM fm)
-  (list (estables_fM lista umbral fM) (estables_fm lista umbral fm)))
+  (list (estables_FM lista umbral fM) (estables_Fm lista umbral fm)))
 
+(define (estables_FM lista umbral fM);fM
+  (if (equal? lista empty)
+      (0)
+      (length (umbral_simple
+               (modsel_simple lista (umbral_simple lista umbral #\M) fM)
+               umbral
+               #\M))))
+
+(define (estables_Fm lista umbral fm);fm
+  (if (equal? lista empty)
+      0
+      (length (umbral_simple
+               (modsel_simple lista (umbral_simple lista umbral #\m) fm)
+               umbral
+               #\m))))
+#|
 (define (estables_fM lista umbral fM)
   (if (equal? lista empty)
       0
@@ -121,7 +137,9 @@
           (append lista_ empty))))
 
 ;(lista_val '(15 2 1 3 27 5 10) (umbral_simple '(15 2 1 3 27 5 10) 5 #\m) (list ) 0) ;Funciona
-;(estables '(15 2 1 3 27 5 10) 5 (lambda (x) (/ x 2)) (lambda (x) (* x 2)))
+|#
+
+(estables '(15 2 1 3 27 5 10) 5 (lambda (x) (/ x 2)) (lambda (x) (* x 2)))
 ;----------------------------------------------------------------------------------------------------------
 
 (define (query lista pos op params)
