@@ -1,4 +1,6 @@
-#lang racket
+#lang racket (current-namespace
+(make-base-namespace))
+
 (define (inverso lista n)
   (inverso_ lista n (list ) 0 0)
   )
@@ -121,6 +123,7 @@
 ;(lista_val '(15 2 1 3 27 5 10) (umbral_simple '(15 2 1 3 27 5 10) 5 #\m) (list ) 0) ;Funciona
 ;(estables '(15 2 1 3 27 5 10) 5 (lambda (x) (/ x 2)) (lambda (x) (* x 2)))
 ;----------------------------------------------------------------------------------------------------------
+
 (define (query lista pos op params)
   (query_ lista pos op params 0)
   )
@@ -136,10 +139,11 @@
   (umbral_simple lista (car params) (last params)))
 
 (define (query_2 lista params)
-  (modsel_simple lista (car params) (lambda (x) (#|aca va last params|#) )))
+  (modsel_simple lista (car params) (eval (last params))))
 
 (define (query_3 lista params)
-  (printf lista))
+  (estables lista (car params) (eval (car (rest params))) (eval (last params))))
 
-(query '((0 1 2 3 4) (4 3 2 1 0) (15 2 1 3 27 5 10)) 1 1 '(1 #\M))
-(query '((0 1 2 3 4) (4 3 2 1 0) (15 2 1 3 27 5 10)) 0 2 '((0 4) (lambda (x) (+ x 100))))
+;(query '((0 1 2 3 4) (4 3 2 1 0) (15 2 1 3 27 5 10)) 1 1 '(1 #\M))
+;(query '((0 1 2 3 4) (4 3 2 1 0) (15 2 1 3 27 5 10)) 0 2 '((0 4) (lambda (x) (+ x 100))))
+;(query '((0 1 2 3 4) (4 3 2 1 0) (15 2 1 3 27 5 10)) 2 3 '(5 (lambda (x) (/ x 2)) (lambda (x) (* x 2))))
