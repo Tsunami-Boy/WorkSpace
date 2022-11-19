@@ -72,20 +72,47 @@
               (append lista_ empty)))))
 
 ;(umbral_cola '(15 2 1 3 27 5 10) 5 #\M)
+;(umbral_cola '(15 2 1 3 27 5 10) 5 #\m)
 ;----------------------------------------------------------------------------------------------------------
-#|
 (define (umbral_simple lista umbral tipo)
-  ;Realizar el codigo
-  )
-|#
+  (umbral_simple_ lista umbral tipo 0))
 
+;;umbral_simple_: retorna una lista con las posiciones de la lista ingresada que los valores sean menores o mayores al umbral dependiendo del "tipo" que se ingrese.
+;;
+;;lista: lista que se desea aplicar la funcion
+;;umbral: numero que se desea comparar en la lista
+;;tipo: tipo de operacion, si es #\m, se operaran con numeros menores al umbral. Si es #\M, se operaran con numeros mayores al umbral.
+;;i: numero entero auxiliar
+(define (umbral_simple_ lista umbral tipo i)
+  (if (equal? tipo #\M)
+      (if (equal? empty lista)
+          (append lista empty)
+          (if (> (length lista) 1)
+              (if (> (car lista) umbral)
+                  (append (list i) (umbral_simple_ (rest lista) umbral tipo (+ i 1)))
+                  (append (list ) (umbral_simple_ (rest lista) umbral tipo (+ i 1))))
+              (if (> (car lista) umbral)
+                  (list i)
+                  (list ))))
+      
+      (if (equal? empty lista)
+          (append lista empty)
+          (if (> (length lista) 1)
+              (if (< (car lista) umbral)
+                  (append (list i) (umbral_simple_ (rest lista) umbral tipo (+ i 1)))
+                  (append (list ) (umbral_simple_ (rest lista) umbral tipo (+ i 1))))
+              (if (< (car lista) umbral)
+                  (list i)
+                  (list ))))))
+
+;(umbral_simple '(15 2 1 3 27 5 10) 5 #\M)
 ;(umbral_simple '(15 2 1 3 27 5 10) 5 #\m)
 ;----------------------------------------------------------------------------------------------------------
 (define (modsel_cola lista seleccion f)
   (modsel_cola_ lista seleccion f (list ) 0)
   )
 
-;;modsel_cola_: se le aplica la funcion f a los elementos de la lista "lista" que sus indices esten contenidos en la lista "seleccion"
+;;modsel_cola_: se le aplica la funcion f a los elementos de la lista "lista" que sus indices esten contenidos en la lista "seleccion" a través de un proceso de cola.
 ;;
 ;;lista: lista que se desea implementar las funciones
 ;;seleccion: lista con los respectivos indices de la lista "lista"
@@ -113,11 +140,28 @@
 ;(modsel_cola '(15 2 1 3 27 5 10) '(0 4 6) (lambda (x) (modulo x 2)))
 ;(modsel_cola '(15 2 1 3 27 5 10) '(3 1 2) (lambda (x) (+ x 5)))
 ;----------------------------------------------------------------------------------------------------------
-#|
 (define (modsel_simple lista seleccion f)
-  ;Realizar el codigo
-  )
-|#
+  (modsel_simple_ lista seleccion f 0))
+
+;;modsel_simple_: se le aplica la funcion f a los elementos de la lista "lista" que sus indices esten contenidos en la lista "seleccion" a través de un proceso simple.
+;;
+;;lista: lista que se desea implementar las funciones
+;;seleccion: lista con los respectivos indices de la lista "lista"
+;;f: funcion a implementar
+;;i: numero entero auxiliar
+(define (modsel_simple_ lista seleccion f i)
+  (if (equal? empty lista)
+      (append (list ) empty)
+      (if (> (length lista) 1)
+          (if (confirmar seleccion i)
+              (append (list (f (car lista))) (modsel_simple_ (rest lista) seleccion f (+ i 1)))
+              (append (list (car lista)) (modsel_simple_ (rest lista) seleccion f (+ i 1))))
+          (if (confirmar seleccion i)
+              (list  (f (car lista)))
+              (list (car lista))))))
+
+;(modsel_simple '(15 2 1 3 27 5 10) '(0 4 6) (lambda (x) (modulo x 2)))
+;(modsel_simple '(15 2 1 3 27 5 10) '(3 1 2) (lambda (x) (+ x 5)))
 ;----------------------------------------------------------------------------------------------------------
 (define (estables lista umbral fM fm)
   (list (estables_FM lista umbral fM) (estables_Fm lista umbral fm)))
