@@ -1,4 +1,4 @@
-#lang racket (current-namespace
+#lang scheme (current-namespace
 (make-base-namespace))
 
 (define (inverso lista n)
@@ -29,7 +29,7 @@
     [(= i num) (append empty lista_)]
     [(< i num) (Aux (append lista_ (list i)) num (+ i 1))]))
 
-;(inverso '() 10)
+;(inverso '(1 3 7) 10)
 ;----------------------------------------------------------------------------------------------------------
 
 (define (umbral_cola lista umbral tipo)
