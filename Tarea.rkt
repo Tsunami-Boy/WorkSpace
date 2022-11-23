@@ -1,4 +1,4 @@
-#lang racket (current-namespace
+#lang scheme (current-namespace
 (make-base-namespace))
 
 (define (inverso lista n)
