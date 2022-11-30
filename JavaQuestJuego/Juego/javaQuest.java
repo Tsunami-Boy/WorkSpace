@@ -1,4 +1,4 @@
-package JavaQuestJuego;
+package JavaQuestJuego.Juego;
 import java.util.SortedSet;
 import javax.swing.JOptionPane;
 

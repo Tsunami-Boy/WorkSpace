@@ -1,4 +1,4 @@
-package JavaQuestJuego;
+package JavaQuestJuego.Juego;
 
 public class Item {
     private String nombre;

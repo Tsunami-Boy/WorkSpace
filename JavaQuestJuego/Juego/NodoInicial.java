@@ -1,4 +1,4 @@
-package JavaQuestJuego;
+package JavaQuestJuego.Juego;
 
 import javax.swing.JOptionPane;
 

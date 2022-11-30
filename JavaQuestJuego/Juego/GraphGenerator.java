@@ -1,4 +1,4 @@
-package JavaQuestJuego;
+package JavaQuestJuego.Juego;
 import java.util.Random;
 import java.util.SortedSet;
 import java.util.TreeSet;

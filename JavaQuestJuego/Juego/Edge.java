@@ -1,4 +1,4 @@
-package JavaQuestJuego;
+package JavaQuestJuego.Juego;
 
 public class Edge implements Comparable<Edge> {
     public final Integer x;

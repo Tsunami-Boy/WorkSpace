@@ -10,14 +10,14 @@ JC = javac
 JVM = java
 
 # Nombre de la clase que contiene la funcion main
-MAIN = JavaQuestJuego/javaQuest
+MAIN = JavaQuestJuego/Juego/javaQuest
 
 # En JAVAS se indican los archivos .java, en este caso se estan indicando:
 # $(wildcard estructuras/*.java) -> todos los archivos .java dentro del directorio estructuras/
 # $(wildcard *.java) -> todos los archivos .java que no estan en un directorio
 #
 # Se debe cambiar los contenidos de esta linea para que se adapten a la estructura de su proyecto
-JAVAS := $(wildcard JavaQuestJuego/*.java) $(wildcard *.java)
+JAVAS := $(wildcard JavaQuestJuego/Juego/*.java) $(wildcard *.java)
 
 # CLASSES son los nombres de los archivos ya compilados, corresponde a los JAVAS pero remplazando el .java por .class
 CLASSES := $(JAVAS:.java=.class)
